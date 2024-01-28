@@ -1,16 +1,24 @@
-import { createStore, combineReducers } from "redux";
-import { devToolsEnhancer } from "@redux-devtools/extension";
+import { configureStore } from "@reduxjs/toolkit";
+// import { createStore, combineReducers } from "redux";
+// import { devToolsEnhancer } from "@redux-devtools/extension";
 import { accountReducer } from "./accountSlice";
 import { localeReducer } from "./localeSlice";
 
-const rootReducer = combineReducers({
-    account: accountReducer,
-    locale: localeReducer,
+export const store = configureStore({//сам створює кореневий редюсер
+    reducer: {
+        account: accountReducer,
+        locale: localeReducer,
+    },
 });
 
-const enhancer = devToolsEnhancer();//ініціалізація redux-devtools в ваніл. redux
+// const rootReducer = combineReducers({
+//     account: accountReducer,
+//     locale: localeReducer,
+// });
 
-export const store = createStore(rootReducer, enhancer);
+// const enhancer = devToolsEnhancer();//ініціалізація redux-devtools в ваніл. redux
+
+// export const store = createStore(rootReducer, enhancer);
 // const accountInitialState = {    
 //     balance: 700,
 //     username: 'Katrin'    

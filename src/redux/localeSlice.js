@@ -1,24 +1,40 @@
+import { createSlice } from "@reduxjs/toolkit";
 
-const inintialState = {
-    lang: 'uk',   
-};
+const localeSlice = createSlice({
+    name: "locale",
+    initialState: {
+        lang: 'uk',   
+    },
+    reducers: {
+        changeLang(state, action) {
+            state.lang = action.payload;
+        },
+    },
+});
 
-export const localeReducer =(state = inintialState, action)=>  {
-    switch (action.type){
-        case 'locale/changLang': 
-            return {
-                ...state,
-                lang: action.payload,
-            };
-        default: 
-            return state;
-    };
-};
+export const localeReducer = localeSlice.reducer;
+export const {changeLang} = localeSlice.actions;
 
-export const changLang = newLang => {
-    return {
-        type: 'locale/changLang',
-        payload: newLang,
-    };
-};
+// const inintialState = {
+//     lang: 'uk',   
+// };
+
+// export const localeReducer =(state = inintialState, action)=>  {
+//     switch (action.type){
+//         case 'locale/changLang': 
+//             return {
+//                 ...state,
+//                 lang: action.payload,
+//             };
+//         default: 
+//             return state;
+//     };
+// };
+
+// export const changLang = newLang => {
+//     return {
+//         type: 'locale/changLang',
+//         payload: newLang,
+//     };
+// };
 
